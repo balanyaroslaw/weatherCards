@@ -1,5 +1,3 @@
-
-import { useState } from 'react'
 import { GoogleMap, Marker} from '@react-google-maps/api';
 import { useUserStore } from '../shared/store/user.store';
 import LoadingComponent from '../components/LoadingComponent';
