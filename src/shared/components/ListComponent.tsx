@@ -1,11 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { useStore } from 'zustand';
 import { User } from '../../types/user.type';
 import UserComponent from '../../components/UserComponent';
-import userService from '../services/user.service';
 import LoadingComponent from '../../components/LoadingComponent';
-import { useUserStore } from '../store/user.store';
-import useAddUser from '../../hooks/useUsers';
 import { useLoadigStore } from '../store/loading.store';
 
 interface ListCompontentProps{

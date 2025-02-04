@@ -1,4 +1,4 @@
-import { Weather } from "../types/user.type";
+import { HourlyWeather, Weather } from "../types/user.type";
 
 export const transformWeatherResponse = (apiResponse: any): Weather => {
     return {
