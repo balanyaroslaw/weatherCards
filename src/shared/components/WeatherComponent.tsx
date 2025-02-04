@@ -1,4 +1,3 @@
-import React from 'react'
 import { Weather } from '../../types/user.type'
 import Rain from '../../assets/rain.png';
 import Sun from '../../assets/sun.png';
@@ -6,8 +5,6 @@ import Fog from '../../assets/fog.png';
 import Thunderstorm from '../../assets/thunderstorm.png';
 import Clouds from '../../assets/clouds.png';
 import Unknown from '../../assets/unknown.png';
-import useWeather from '../../hooks/useWeather';
-import { useWeatherStore } from '../store/weather.store';
 
 const weatherMap: Record<number, string> = {
   0: Sun,

@@ -1,6 +1,5 @@
-import { useState } from "react";
 import weatherService from "../shared/services/weather.service";
-import { HourlyWeather, User } from "../types/user.type";
+import {User } from "../types/user.type";
 import { transformHourlyWeatherResponse, transformWeatherResponse } from "../utilities/transformWeather";
 import { useWeatherStore } from "../shared/store/weather.store";
 const useWeather = () => {

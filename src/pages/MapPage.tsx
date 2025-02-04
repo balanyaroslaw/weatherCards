@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { GoogleMap, Marker} from '@react-google-maps/api';
 import { useUserStore } from '../shared/store/user.store';
 import LoadingComponent from '../components/LoadingComponent';
@@ -8,8 +8,6 @@ const containerStyle = {
     height: '400px',
   };
   
-  const center = { lat: 37.7749, lng: -122.4194 }; 
-
   function MapPage() {
     const currentUser = useUserStore((state) => state.currentUser);
     const [map, setMap] = useState<google.maps.Map | null>(null);

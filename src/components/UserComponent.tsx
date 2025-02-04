@@ -1,6 +1,6 @@
 
-import React, { useState } from 'react'
-import { User, Weather } from '../types/user.type'
+import{ useState } from 'react'
+import { User} from '../types/user.type'
 import useWeather from '../hooks/useWeather';
 import useModal from '../hooks/useModal';
 import { WindowList } from '../types/windows.enum';

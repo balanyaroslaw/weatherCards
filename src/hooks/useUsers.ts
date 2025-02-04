@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useUserStore } from "../shared/store/user.store";
 import userService from "../shared/services/user.service";
 import { useLoadigStore } from "../shared/store/loading.store";

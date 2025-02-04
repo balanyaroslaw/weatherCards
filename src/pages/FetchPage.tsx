@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react'
+import { useEffect} from 'react'
 import ListComponent from '../shared/components/ListComponent'
 import WeatherWindow from '../shared/windows/WeatherWindow'
 import { useUserStore } from '../shared/store/user.store'

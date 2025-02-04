@@ -1,8 +1,6 @@
 
-import React from 'react'
-import { useUserStore } from '../store/user.store'
 import useAddUser from '../../hooks/useUsers'
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ROUTER_KEYS } from '../keys';
 
 function MenuComponent() {

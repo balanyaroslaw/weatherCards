@@ -1,5 +1,4 @@
 
-import React from 'react'
 import { HourlyWeather } from '../../types/user.type'
 
 interface HourlyWeatherProps{

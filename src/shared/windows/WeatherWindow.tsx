@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react'
-import { HourlyWeather, User, Weather } from '../../types/user.type'
+import { HourlyWeather, Weather } from '../../types/user.type'
 import { useUserStore } from '../store/user.store';
 import { WindowList } from '../../types/windows.enum';
 import useModal from '../../hooks/useModal';

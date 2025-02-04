@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { User, Weather } from "../../types/user.type";
+import { User} from "../../types/user.type";
 
 interface UserStoreState {
     users: User[];
