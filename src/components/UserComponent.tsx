@@ -81,26 +81,26 @@ function UserComponent({ data }: UserComponentProps) {
         <span className="text-gray-600 text-lg">Email: {data.email}</span>
 
         <div className="flex flex-col gap-3 mt-6 justify-center sm:justify-start">
-          <div className="flex sm:flex-row gap-2 w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
             <button
               className={`${
-                userExists 
-                  ? 'bg-red-500 hover:bg-red-600'
-                  : 'bg-blue-500 hover:bg-blue-600'
-              } text-white px-10 py-2 text-2xl rounded-lg shadow-lg transition transform hover:scale-105`}
+                userExists
+                  ? 'bg-red-500 hover:bg-red-600 px-5 sm:px-8'
+                  : 'bg-blue-500 hover:bg-blue-600 px-8 sm:px-10'
+              } text-white py-2 text-xl sm:text-2xl rounded-lg shadow-lg transition transform hover:scale-105`}
               onClick={() => (userExists ? removeSavedUser() : addSavedUsers())}
             >
               {userExists ? 'Remove' : 'Save'}
             </button>
             <button
-              className="bg-green-500 text-white px-9 py-2 text-xl rounded-lg shadow-lg hover:bg-green-600 transition transform hover:scale-105"
+              className="bg-green-500 text-white px-8 sm:px-10 py-2 text-xl sm:text-2xl rounded-lg shadow-lg hover:bg-green-600 transition transform hover:scale-105"
               onClick={() => getWeather()}
             >
               Show Weather
             </button>
           </div>
           <button
-            className="bg-yellow-500 text-white px-10 py-2 text-lg rounded-lg shadow-lg hover:bg-yellow-600 transition transform hover:scale-105"
+            className="bg-yellow-500 text-white px-8 sm:px-10 py-2 text-lg sm:text-xl rounded-lg shadow-lg hover:bg-yellow-600 transition transform hover:scale-105"
             onClick={() => onMapClick()}
           >
             Show on Map
