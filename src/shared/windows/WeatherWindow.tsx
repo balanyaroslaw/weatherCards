@@ -55,34 +55,36 @@ interface WeatherWindowProps {
 
     return (
       <div className="fixed top-0 inset-0 flex items-center justify-center bg-black/50 z-50">
-        <div className="bg-white rounded-lg shadow-lg p-6 max-w-sm w-full">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-xl font-semibold">Weather Information</h2>
-            <button onClick={()=>onClose()} className="text-gray-500 hover:text-gray-700">
+        <div className="bg-white rounded-lg shadow-2xl p-8 max-w-3xl w-full">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-3xl font-semibold">Weather Information</h2>
+            <button onClick={() => onClose()} className="text-gray-500 hover:text-gray-700 text-2xl">
               ✖️
             </button>
           </div>
-          {hourlyWeather?
-            <HourlyWeatherComponent data={hourlyWeather}/>:
-            <WeatherComponent data={data}/>
-          }
-          <div className="flex justify-center mt-4 space-x-4">
+          {hourlyWeather ? (
+            <HourlyWeatherComponent data={hourlyWeather} />
+          ) : (
+            <WeatherComponent data={data} />
+          )}
+          <div className="flex justify-center mt-6 space-x-6">
             <button
               onClick={onClose}
-              className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
+              className="bg-blue-500 text-white px-6 py-3 text-lg rounded-lg hover:bg-blue-600 transition"
             >
               Close
             </button>
             <button
-              onClick={hourlyWeather?onCurrentWeather:openHourlyWeatherWindow}
-              className="bg-purple-500 text-white px-6 py-2 rounded-lg hover:bg-purple-600 transition"
+              onClick={hourlyWeather ? onCurrentWeather : openHourlyWeatherWindow}
+              className="bg-purple-500 text-white px-8 py-3 text-lg rounded-lg hover:bg-purple-600 transition"
             >
-              {hourlyWeather?"Current Weather":"Hourly Weather"}
+              {hourlyWeather ? 'Current Weather' : 'Hourly Weather'}
             </button>
           </div>
         </div>
       </div>
     );
+    
   };
 
 export default WeatherWindow

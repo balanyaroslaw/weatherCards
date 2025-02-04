@@ -31,15 +31,20 @@ interface WeatherProps{
     data:Weather
 }
 function WeatherComponent({data}:WeatherProps) {
-  return (
-    <div className="flex flex-col items-center">
-        <img src={weatherMap[data.iconCode]||Unknown} alt="" className='w-20 h-20'/>
-        <p className="text-lg font-medium">{data.description}</p>
-        <p className="text-gray-600">Current: {data.temperature.current}°C</p>
-        <p className="text-gray-600">Low: {data.temperature.lowest}°C</p>
-        <p className="text-gray-600">High: {data.temperature.highest}°C</p>
-    </div>
-  )
+    return (
+        <div className="flex flex-col items-center space-y-4 p-6">
+          <img 
+            src={weatherMap[data.iconCode] || Unknown} 
+            alt="" 
+            className="w-36 h-36" 
+          />
+          <p className="text-2xl font-semibold">{data.description}</p>
+          <p className="text-xl text-gray-600">Current: {data.temperature.current}°C</p>
+          <p className="text-xl text-gray-600">Low: {data.temperature.lowest}°C</p> 
+          <p className="text-xl text-gray-600">High: {data.temperature.highest}°C</p> 
+        </div>
+      );
+      
 }
 
 export default WeatherComponent
