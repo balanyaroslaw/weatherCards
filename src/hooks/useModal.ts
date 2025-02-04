@@ -1,5 +1,5 @@
 import { useModalStore } from "../shared/store/modal.store"
-import { useUserStore } from "../shared/store/user.store"
+import { useWeatherStore } from "../shared/store/weather.store";
 import { WindowList } from "../types/windows.enum"
 
 const useModal = () => {
@@ -7,7 +7,7 @@ const useModal = () => {
     const isOpen = useModalStore((state)=>state.isOpen);
     const window = useModalStore((state)=>state.window);
 
-    const setWeather = useUserStore((state)=>state.setWeather);
+    const setWeather = useWeatherStore((state)=>state.setWeather);
 
     const openModal = (windowData:WindowList) =>{
         setModal(true, windowData);

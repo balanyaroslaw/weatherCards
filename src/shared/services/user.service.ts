@@ -13,6 +13,6 @@ class UserService extends HttpService {
   }
 }
 
-const userService = new UserService(API_LINKS.USER_API)
+const userService = new UserService(API_LINKS.USER_API);
 
 export default userService;

@@ -1,50 +1,57 @@
 
-import React from 'react'
-import { Weather } from '../../types/user.type'
+import React, { useEffect, useState } from 'react'
+import { HourlyWeather, User, Weather } from '../../types/user.type'
 import { useUserStore } from '../store/user.store';
-import { useModalStore } from '../store/modal.store';
 import { WindowList } from '../../types/windows.enum';
 import useModal from '../../hooks/useModal';
-import Rain from '../../assets/rain.png';
-import Sun from '../../assets/sun.png';
-import Fog from '../../assets/fog.png';
-import Thunderstorm from '../../assets/thunderstorm.png';
-import Clouds from '../../assets/clouds.png';
-import Unknown from '../../assets/unknown.png';
-
-const weatherIcon = (code:number) =>{
-  if(code<=1){
-    return Sun;
-  }
-  else if(code>1&& code<=3){
-    return Clouds;
-  }
-  else if(code>=45 && code<=48){
-    return Fog;
-  }
-  else if(code >= 51 && code <=82){
-    return Rain;
-  }
-  else if(code >= 83 && code <=99){
-    return Thunderstorm;
-  }
-  else{
-    return Unknown;
-  }
-}
-
+import useWeather from '../../hooks/useWeather';
+import { useWeatherStore } from '../store/weather.store';
+import WeatherComponent from '../components/WeatherComponent';
+import HourlyWeatherComponent from '../components/HourlyWeatherComponent';
 interface WeatherWindowProps {
     data: Weather;
     isOpenStatus: boolean;
   }
+
   
   const WeatherWindow: React.FC<WeatherWindowProps> = ({ data, isOpenStatus}) => {
     if (!isOpenStatus) return null; 
     console.log(data)
     const {closeModal} = useModal();
+    const {fetchWeather, fetchHourlyWeather, restartCurrentWeather} = useWeather();
+    const currentUser = useUserStore((state)=>state.currentUser);
+    const hourlyWeatherData = useWeatherStore((state)=>state.hourlyWeather);
+    const [hourlyWeather, setHourlyWeather] = useState<HourlyWeather|null>(null);
     const onClose = () => {
-        closeModal(WindowList.WeatherWindow)
+        closeModal(WindowList.WeatherWindow);
+        restartCurrentWeather();
     }
+
+    const openHourlyWeatherWindow = () =>{
+        console.log(currentUser);
+        fetchHourlyWeather(currentUser!);
+    }
+
+    const onCurrentWeather = () =>{
+      setHourlyWeather(null);
+      restartCurrentWeather();
+    }
+
+    useEffect(()=>{
+      setHourlyWeather(hourlyWeatherData);
+    },[hourlyWeatherData]);
+
+    useEffect(() => {
+      if (currentUser) {
+        fetchWeather(currentUser);
+  
+        const interval = setInterval(() => {
+          fetchWeather(currentUser);
+        }, 5 * 60 * 1000);
+  
+        return () => clearInterval(interval);
+      }
+    }, [currentUser]);
 
     return (
       <div className="fixed top-0 inset-0 flex items-center justify-center bg-black/50 z-50">
@@ -55,19 +62,22 @@ interface WeatherWindowProps {
               ✖️
             </button>
           </div>
-          <div className="flex flex-col items-center">
-            <img src={weatherIcon(data.iconCode)} alt="" className='w-20 h-20'/>
-            <p className="text-lg font-medium">{data.description}</p>
-            <p className="text-gray-600">Current: {data.temperature.current}°C</p>
-            <p className="text-gray-600">Low: {data.temperature.lowest}°C</p>
-            <p className="text-gray-600">High: {data.temperature.highest}°C</p>
-          </div>
-          <div className="flex justify-end mt-4">
+          {hourlyWeather?
+            <HourlyWeatherComponent data={hourlyWeather}/>:
+            <WeatherComponent data={data}/>
+          }
+          <div className="flex justify-center mt-4 space-x-4">
             <button
               onClick={onClose}
               className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
             >
               Close
+            </button>
+            <button
+              onClick={hourlyWeather?onCurrentWeather:openHourlyWeatherWindow}
+              className="bg-purple-500 text-white px-6 py-2 rounded-lg hover:bg-purple-600 transition"
+            >
+              {hourlyWeather?"Current Weather":"Hourly Weather"}
             </button>
           </div>
         </div>

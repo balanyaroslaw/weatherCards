@@ -35,3 +35,10 @@ export const transformWeatherResponse = (apiResponse: any): Weather => {
     };
     return weatherMap[code] || "Unknown Weather";
   };
+
+  export const transformHourlyWeatherResponse = (data: any): HourlyWeather => {
+    return {
+        time: data.hourly.time, 
+        temperature_2m: data.hourly.temperature_2m,
+    };
+};

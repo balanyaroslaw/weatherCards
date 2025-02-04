@@ -8,6 +8,7 @@ const useUser = () => {
     const addUser = useUserStore((state) => state.addUser);
 
     const setSaved = useUserStore((state)=>state.setSavedUsers);
+    const setCurrentUser = useUserStore((state)=>state.setCurrentUser);
     const setLoading = useLoadigStore((state)=>state.setLoading);
 
     const fetchUser = async () => {
@@ -22,8 +23,12 @@ const useUser = () => {
     const setSavedUsers = (users:User[]) => {
       setSaved(users);
     };
+
+    const setCurrent = (user:User) => {
+      setCurrentUser(user)
+    };
   
-    return { fetchUser, setSavedUsers};
+    return { fetchUser, setSavedUsers, setCurrent};
   };
 
 export default useUser;

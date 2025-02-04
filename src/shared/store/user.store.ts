@@ -1,22 +1,22 @@
 import { create } from "zustand";
 import { User, Weather } from "../../types/user.type";
 
-interface StoreState {
-    users: User[] | [];
-    savedUsers:User[] | [];
-    weather: Weather | null;
+interface UserStoreState {
+    users: User[];
+    currentUser: User | null;
+    savedUsers: User[];
     addUser: (user: User) => void;
     getUsers: () => User[];
-    setWeather:(weather:Weather | null) => void; 
-    setSavedUsers:(users: User[]) => void;
-}
-
-export const useUserStore = create<StoreState>((set, get) => ({
+    setSavedUsers: (users: User[]) => void;
+    setCurrentUser: (user: User) => void;
+  }
+  
+export const useUserStore = create<UserStoreState>((set, get) => ({
     users: [],
-    savedUsers:[],
-    weather: null,
-    addUser: (user:User) => set((state) => ({ users: [user, ...state.users!] })),
-    getUsers: () => get().users!,
-    setWeather:(weatherData:Weather | null) => set({weather:weatherData}),
-    setSavedUsers:(savedUsers:User[])=>set({savedUsers:savedUsers})
+    currentUser: null,
+    savedUsers: [],
+    addUser: (user: User) => set((state) => ({ users: [user, ...state.users] })),
+    getUsers: () => get().users,
+    setSavedUsers: (savedUsers: User[]) => set({ savedUsers }),
+    setCurrentUser: (user: User) => set({ currentUser: user }),
 }));

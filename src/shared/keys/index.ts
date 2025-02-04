@@ -10,5 +10,6 @@ export enum LOCALSTORAGE_KEYS{
 
 export enum ROUTER_KEYS{
     ALL='/',
-    SAVED='/saved'
+    SAVED='/saved',
+    MAP ='/map'
 }

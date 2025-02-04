@@ -35,6 +35,15 @@ export interface User{
     location:Location
 }
 
+export interface HourlyWeather {
+    time: string[]; 
+    temperature_2m: number[];
+  }
+  
+export interface WeatherResponse {
+    hourly: HourlyWeather;
+  }
+
 export interface Temperature{
     current:number,
     lowest:number,
