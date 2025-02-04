@@ -1,4 +1,3 @@
-import React from 'react'
 import MenuComponent from '../shared/components/MenuComponent'
 import { LOCALSTORAGE_KEYS } from '../shared/keys'
 import Router from '../router/router'

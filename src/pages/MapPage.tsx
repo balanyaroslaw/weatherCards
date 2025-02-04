@@ -10,7 +10,6 @@ const containerStyle = {
   
   function MapPage() {
     const currentUser = useUserStore((state) => state.currentUser);
-    const [map, setMap] = useState<google.maps.Map | null>(null);
     console.log(currentUser);
 
     const lat = Number(currentUser?.location.coordinates.latitude);
@@ -19,7 +18,6 @@ const containerStyle = {
     const markerIcon = currentUser?.picture.thumbnail||"https://maps.google.com/mapfiles/ms/icons/red-dot.png";
 
     const handleMapLoad = (mapInstance: google.maps.Map) => {
-        setMap(mapInstance);
         
         new google.maps.Marker({
           position: {lat, lng:lon},
